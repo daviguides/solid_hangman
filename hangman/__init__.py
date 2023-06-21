@@ -1,12 +1,12 @@
-# versão de um app deve estar no seu pacote principal
+# The version of an app should be defined in its main package
 __author__ = "Davi Luiz Guides"
 __version__ = "0.1.0"
 
-# atalho para a classe principal dessa lib
+# Shortcut to the main class of this library
 from .factory import HangmanGameTerminalFactory
 
-# Uma simples facade para a aplicação que aponta para o factory
+# A simple facade for the application pointing to the factory
 class HangmanGameApp:
     @classmethod
-    def factory(self):
+    def factory(cls):
         return HangmanGameTerminalFactory.factory()

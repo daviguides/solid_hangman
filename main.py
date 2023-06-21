@@ -1,12 +1,12 @@
-"""este módulo main somente carrega o app
+"""This main module only loads and starts the app.
 """
+
 from hangman import HangmanGameApp
 
-
 if __name__ == "__main__":
-    # Chama o factory do app
+    # Calls the app factory
     hg = HangmanGameApp.factory()
-    # define se vai estar com debug ligado
+    # Defines if debug mode will be enabled
     hg.domain.debug = True
-    # ínicia o jogo
+    # Starts the game
     hg.start()

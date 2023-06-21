@@ -1,34 +1,34 @@
 from hangman.common import TerminalCanvas
 
 class HangCanvas(TerminalCanvas):
-    # função principal
+    # Main function
     def show(self):
         while True:
-            # mostra a tela principal com a forca
+            # Displays the main hangman screen
             self.draw()
 
-            # Se a pessoa já chegou ao número de erros ou descobriu a palavra
-            # interrompe o game loop
+            # If the player reaches the maximum number of mistakes or discovers the word,
+            # the game loop is interrupted
             if self.domain.error_count == 6 \
                 or self.domain.secret == self.domain.word:
                 break
 
-            # Se não abre o input para inserir mais uma letra
+            # Otherwise, opens the input for the player to guess another letter
             self._print_input()
         return self.domain.secret == self.domain.word
 
-    # desenha tela
+    # Draws the screen
     def draw(self):
-        # pega o segredo
+        # Gets the secret word
         self._get_secret()
 
-        # imprime o topo da forca
+        # Prints the top of the gallows
         print(f"||===:===\n||   :")
-        # imprime o cabeça se tiver um erro ou mais
+        # Prints the head if there is at least one mistake
         head = " O" if self.domain.error_count >= 1 else ""
         self._print_line(head)
 
-        # imprime as partes do corpo de acordo com o nível de erros
+        # Prints the body parts based on the number of mistakes
         body_parts = {
             0:"\n||",
             1:"\n||",
@@ -36,56 +36,56 @@ class HangCanvas(TerminalCanvas):
             3:"\| \n||", # == 3
             4:"\|/\n||", # >= 4
             5:"\|/\n||  /", # >= 5
-            6:"\|/\n||  / \\", # >= 5
+            6:"\|/\n||  / \\", # == 6
         }
-        # seleciona opção correta do hashmap
+        # Selects the correct option from the hashmap
         body = body_parts[self.domain.error_count]
-        # e imprime
+        # And prints it
         self._print_line(body)
 
-        # imprime uma linha vazia
+        # Prints an empty line
         self._print_line('')
-        # imprime o chão
+        # Prints the ground
         print("||\n===========")
 
-        # imprime a mensagem de feedback
+        # Prints the feedback message
         print(self.domain.msg)
         
-        # se chegou a 6 erros retorna True
+        # Returns True if the player has made 6 mistakes
         if self.domain.error_count == 6:
             return True
     
-    # função retorna a palavra com •••••••
+    # Function returns the secret word with hidden characters (•••)
     def _get_secret(self):
-        # limpa tela
+        # Clears the screen
         self._clear_screen() 
-        # limpa segredo
+        # Resets the secret
         self.domain.secret = ""
-        # faz um loop por cada letra da palavra carregada
+        # Loops through each letter in the loaded word
         for char in self.domain.word:
-            # se a letre estiver nos acertos retorna ela, se não retorna "•"
+            # If the letter is among the guessed letters, show it; otherwise show "•"
             self.domain.secret += char if char in self.domain.hits else "•"
-        self._print_interline(f'Palavra: {self.domain.secret}')
+        self._print_interline(f'Word: {self.domain.secret}')
 
-    # função responsavel por imprimir o input de entrada de caractere para o usuário
+    # Function responsible for printing the input prompt for the user
     def _print_input(self):
-        # imprime o input
-        char = input("\nDigite uma letra:").lower().strip()
-        # limpa a mensagem de feedback
+        # Prompts for a character
+        char = input("\nType a letter:").lower().strip()
+        # Clears the feedback message
         self.domain.msg = ""
-        # verifica se a pessoa já digitou aquela letra 
+        # Checks if the player already typed that letter
         if char in self.domain.typed:
-            # se sim adiciona feedback
-            self.domain.msg = "Você já tentou esta letra!"
+            # If yes, adds feedback
+            self.domain.msg = "You already tried this letter!"
         else:
-            # se não adiciona a letra a digitados 
+            # Otherwise, adds the letter to the typed list
             self.domain.typed += char
-            # verifica se a letra esta na palavra
+            # Checks if the letter is in the word
             if char in self.domain.word:
-                # se sim adiciona nos acertos
+                # If yes, adds it to hits
                 self.domain.hits += char
             else:
-                # se não incrementa o contador de erros
+                # Otherwise, increments the error counter
                 self.domain.error_count += 1
-                # e adiciona mensagem de erro para o usuário
-                self.domain.msg = "Você errou!"
+                # And adds an error message for the player
+                self.domain.msg = "Wrong guess!"

@@ -1,38 +1,38 @@
-"""Esse pacote contem uma o mais factories, padrão que faz o 
-assemble de várias classes para para executar um aplicativo
+"""This package contains one or more factories,
+following the pattern that assembles several classes to run an application.
 """
-# Importa o HangmanGame
+
+# Imports the HangmanGame
 from .controller import HangmanGame
 
-# Essa classe é um padrão factory que monta o jogo da forca para terminal
-class HangmanGameTerminalFactory():
+
+# This class is a factory pattern that builds the terminal hangman game
+class HangmanGameTerminalFactory:
     @classmethod
     def factory(cls):
-        # importa as classes concretas para montar o jogo para terminal
-        from .views import (PromptChoicesCanvas, HangCanvas, 
-                                WonCanvas, HangedCanvas)
-        # usa o wordloader apartir de arquivos
+        # imports the concrete classes to build the terminal game
+        from .views import PromptChoicesCanvas, HangCanvas, WonCanvas, HangedCanvas
+
+        # uses the word loader from files
         from .common import FileWordLoader
 
-        # carrega o singleton do dominio do jogo
+        # loads the singleton domain of the game
         from .domain import domain
 
-        # retorna o jogo montado
+        # returns the fully assembled game
         return HangmanGame(
-            # carrega o singleton do domain
+            # loads the singleton domain
             domain=domain,
-            # utiliza o wordloader de arquivos textos
+            # uses the text file word loader
             file_loader=FileWordLoader.factory(),
-
-            # carrega a tela de escolha de nível para terminal
+            # loads the difficulty selection screen for the terminal
             prompt_choices=PromptChoicesCanvas.factory(
-                question='Escolha um nível',
-                options=['Fácil', 'Difícil']
+                question="Choose a level", options=["Easy", "Hard"]
             ),
-            # carrega a tela de forca para terminal
+            # loads the hangman screen for the terminal
             hang_canvas=HangCanvas.factory(),
-            # carrega a vitória para terminal
+            # loads the victory screen for the terminal
             won_screen=WonCanvas.factory(),
-            # carrega a enforcado para terminal
-            hanged_canvas=HangedCanvas.factory()
+            # loads the hanged (loss) screen for the terminal
+            hanged_canvas=HangedCanvas.factory(),
         )

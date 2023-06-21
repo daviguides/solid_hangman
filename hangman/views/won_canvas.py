@@ -2,52 +2,52 @@ from time import sleep
 from hangman.common import TerminalCanvas
 
 class WonCanvas(TerminalCanvas):
-    """Essa classe define a tela quando a pessoa vence o jogo
-    com uma animação legal :)
+    """This class defines the screen when the player wins the game,
+    with a cool animation :)
     """
     def show(self):
-        # roda 6 vezes a animação usando um for
+        # Runs the animation 6 times using a loop
         for _ in range(6):
-            # chama o quadro 1
+            # Displays frame 1
             self.draw_free_sprite_1()
-            # aguarda 0,6 segundos
+            # Waits 0.6 seconds
             sleep(.6)
-            # chama o quadro 2
+            # Displays frame 2
             self.draw_free_sprite_2()
-            # aguarda 0,6 segundos
+            # Waits 0.6 seconds
             sleep(.6)
     
-    # Essa função imprime o quadro 1 da animação
+    # This function prints frame 1 of the animation
     def draw_free_sprite_1(self):
-        # limpa a tela
-        self._clear_screen() 
-        # imprime a palavra
-        self._print_interline(f'Palavra: {self.domain.secret}')
-        # imprime o topo da forca
+        # Clears the screen
+        self._clear_screen()
+        # Prints the secret word
+        self._print_interline(f'Word: {self.domain.secret}')
+        # Prints the top of the gallows
         print(f"||===:===\n||   :")
 
-        # imprime o meio do quadro
+        # Prints the middle of the frame
         man = ['','','  O ',' /|\\',' / \\']
         self._print_lines(man)
 
-        # imprime o chão
+        # Prints the ground
         print("===========")
-        # imprime mensagem de acerto
-        print("Você acertou!\n")
+        # Prints a success message
+        print("You got it right!\n")
 
-    # Essa função imprime o quadro 2 da animação
+    # This function prints frame 2 of the animation
     def draw_free_sprite_2(self):
-        # limpa a tela
+        # Clears the screen
         self._clear_screen()
-        # imprime a palavra
-        self._print_interline(f'Palavra: {self.domain.secret}')
-        # imprime o topo da forca
+        # Prints the secret word
+        self._print_interline(f'Word: {self.domain.secret}')
+        # Prints the top of the gallows
         print(f"||===:===\n||   :")
-        # imprime o meio do quadro
-        man = ['    Parabens!!! ',' \O/ ','  |',' / \\','']
+        # Prints the middle of the frame
+        man = ['    Congratulations!!! ',' \\O/ ','  |',' / \\','']
         self._print_lines(man)
 
-        # imprime o chão
+        # Prints the ground
         print("===========")
-        # imprime mensagem de acerto
-        print("Você acertou!\n")
+        # Prints a success message
+        print("You got it right!\n")

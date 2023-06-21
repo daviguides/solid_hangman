@@ -1,33 +1,34 @@
-"""Esse pacote contem a classe abastrata do jogo da forca com a assinatura esperada
+"""This package contains the abstract base class for the Hangman game
+with the expected contract signature.
 """
-from abc import ABC
-# importa classes abastratas e não classes concretas
-# pois o jogo pode ter mais de uma implementação um para terminal 
-# outra para web por exemplo
-from .common import Canvas, WordLoader
 
+from abc import ABC
+
+# Imports abstract classes, not concrete classes,
+# because the game can have multiple implementations (e.g., terminal, web)
+from .common import Canvas, WordLoader
 from .domain import HangmanDomain
 
-
 class HangmanGameBase(ABC):
-    """ Essa classe abstrata define a assinatura que se espera de uma 
-    implementação do jogo da força contenha
+    """This abstract class defines the expected contract signature
+    for a Hangman game implementation.
     """
-    def __init__(self, 
-            # modelo do jogo
+
+    def __init__(self,
+            # Game model
             domain: HangmanDomain,
-            # o carregador de palavra
+            # Word loader
             file_loader: WordLoader,
-            # a tela de opção de nível
+            # Difficulty selection screen
             prompt_choices: Canvas,
-            # a tela com a forca
+            # Hangman screen
             hang_canvas: Canvas,
-            # a tela com o parabens
+            # Congratulations screen
             won_screen: Canvas,
-            # a tela com o enforcado
+            # Hanged man (loss) screen
             hanged_canvas: Canvas):
 
-        #abaixo a assinatura da classe é setada em suas respectivas propriedades
+        # Below, the class signature is set to their respective properties
         self.domain: HangmanDomain = domain
         self.prompt_choices: WordLoader = prompt_choices
         self.load_word: Canvas = file_loader

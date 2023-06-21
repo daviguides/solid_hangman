@@ -2,46 +2,46 @@ import os
 from abc import ABC
 
 class Canvas(ABC):
-    """Classe abstrata que representa um determinado canvas, 
-    por exemplo canvas para usar em termina e outro para uma janela no OS
+    """Abstract class representing a canvas,
+    e.g., a canvas for terminal usage or a graphical window.
     """
     pass
 
 class TerminalCanvas(ABC):
-    """Essa classe abstrata implementa algumas propriedades 
-    e funções privadas que seram usadas pelas telas do game
+    """This abstract class implements some common properties
+    and private functions that are used by the game screens.
     """
     def __init__(self, domain):
         self.domain = domain
-        # constante com o caractere que faz as linhas horizontais ====
+        # Constant with the character used for horizontal lines ====
         self.LINE_CHAR = "="
-        # constante com o caractere que faz as linhas verticais ||
+        # Constant with the character used for vertical lines ||
         self.WALL_CHAR = "||"
 
     @classmethod
     def factory(cls):
         from hangman.domain import domain
-        return cls(domain = domain)
+        return cls(domain=domain)
     
     def _print_interline(self, value):
-        # printa uma linha com espaço uma linha em branco acima e abaixo
+        # Prints a line with a blank line above and below
         print(f'\n{value} \n')
 
     def _print_line(self, value):
-        # imprime uma linha
+        # Prints a single line
         print(f"{self.WALL_CHAR}  {value}")
     
     def _print_lines(self, values):
-        # imprime uma sequencia de linhas
+        # Prints a sequence of lines
         for value in values:
             self._print_line(value)
 
-    # função que limpa a tela
+    # Function that clears the screen
     def _clear_screen(self):
-        # verifica que é um sistema unix (linux, mac)
-        if(os.name == 'posix'):
-            # se sim roda o comando correpondente
+        # Checks if it's a Unix-based system (Linux, macOS)
+        if os.name == 'posix':
+            # If yes, runs the corresponding clear command
             os.system('clear')
         else:
-            # caso o contrário roda o comando para windows
+            # Otherwise, runs the clear command for Windows
             os.system('cls')
