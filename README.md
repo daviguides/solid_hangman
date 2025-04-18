@@ -1,5 +1,6 @@
 # Solid Hangman 🎯
 *Or how to overengineer a simple terminal game*
+<img src="images/won.gif" alt="Davi Picture" align="right" style="width: 470px"/>
 
 Welcome to **Solid Hangman** — a project born from the desire to apply advanced programming principles to a simple terminal game, just for fun (and a little overengineering).
 
@@ -8,7 +9,11 @@ In this project, you'll find a clean, modular structure based on solid design pr
 > ⚠️ **Disclaimer**: Despite all the engineering, this project is intended purely for educational and entertainment purposes.
 > We do not take any responsibility for damages if you attempt to run it in a production environment. (But if you do, good luck! 😅)
 
+> 🧍**Note**: No stick figures were harmed in the making of this project.
+
 ## 📦 Project Structure
+<img src="images/demo.gif" alt="Davi Picture" align="right" style="width: 400px"/>
+<br/>
 
 - `main.py`: The entrypoint to start the game.
 - `hangman/`: Core package for the game.
@@ -18,6 +23,8 @@ In this project, you'll find a clean, modular structure based on solid design pr
   - `controller.py`: Game flow manager.
   - `factory.py`: Responsible for wiring all components together.
 - `data/`: Word lists for Easy and Hard modes.
+
+<br/><br/><br/>
 
 ## 🚀 How to Play
 
