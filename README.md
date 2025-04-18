@@ -1,6 +1,7 @@
 # Solid Hangman 🎯
 *Or how to overengineer a simple terminal game*
-<img src="images/won.gif" alt="Davi Picture" align="right" style="width: 470px"/>
+
+<img src="images/won.gif" alt="Davi Picture" align="right" style="width: 400px"/>
 
 Welcome to **Solid Hangman** — a project born from the desire to apply advanced programming principles to a simple terminal game, just for fun (and a little overengineering).
 
@@ -12,8 +13,8 @@ In this project, you'll find a clean, modular structure based on solid design pr
 > 🧍**Note**: No stick figures were harmed in the making of this project.
 
 ## 📦 Project Structure
+
 <img src="images/demo.gif" alt="Davi Picture" align="right" style="width: 400px"/>
-<br/>
 
 - `main.py`: The entrypoint to start the game.
 - `hangman/`: Core package for the game.
@@ -24,13 +25,10 @@ In this project, you'll find a clean, modular structure based on solid design pr
   - `factory.py`: Responsible for wiring all components together.
 - `data/`: Word lists for Easy and Hard modes.
 
-<br/><br/><br/>
-
 ## 🚀 How to Play
 
-<br/>
 
-<img src="images/blueprint.png" alt="Davi Picture" align="right" style="width: 300px"/>
+<img src="images/blueprint.png" alt="Davi Picture" align="right" style="width: 250px"/>
 
 1. Clone this repository:
    ```bash
@@ -44,8 +42,6 @@ In this project, you'll find a clean, modular structure based on solid design pr
    ```
 
 3. Choose your difficulty and try to guess the word before the Hangman is complete!
-
-<br/>
 
 ## 🎯 Why This Project?
 
