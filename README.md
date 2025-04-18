@@ -28,9 +28,13 @@ In this project, you'll find a clean, modular structure based on solid design pr
 
 ## 🚀 How to Play
 
+<br/>
+
+<img src="images/blueprint.png" alt="Davi Picture" align="right" style="width: 300px"/>
+
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/solid-hangman.git
+   git clone https://github.com/daviguides/solid_hangman.git
    cd solid-hangman
    ```
 
@@ -40,6 +44,8 @@ In this project, you'll find a clean, modular structure based on solid design pr
    ```
 
 3. Choose your difficulty and try to guess the word before the Hangman is complete!
+
+<br/>
 
 ## 🎯 Why This Project?
 
