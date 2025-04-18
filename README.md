@@ -1,4 +1,4 @@
-# Solid Hangman 🎯
+# SOLID Hangman 🎯
 *Or how to overengineer a simple terminal game*
 
 <img src="images/won.gif" alt="Davi Picture" align="right" style="width: 400px"/>
